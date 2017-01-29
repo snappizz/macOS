@@ -26,7 +26,8 @@ notifications: # set notification options
   # disable all email
   email: false
 
-os: osx
+os: 
+  - osx
 language: python # specify your language
 node_js: # specify options for your language
   - '2.7'
