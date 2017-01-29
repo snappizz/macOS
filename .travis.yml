@@ -26,9 +26,10 @@ notifications: # set notification options
   # disable all email
   email: false
 
-os: osx
-language: python # specify your language
-  - '2.7'
+matrix:
+    include:
+        - os: osx
+          language: generic
 
 # run
 branches:
@@ -36,6 +37,10 @@ branches:
     - main
 
 before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install python2.7; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then virtualenv venv -p python2.7; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then source venv/bin/activate; fi
   - git clone https://github.com/nCoda/julius.git build/julius
   - git clone https://github.com/nCoda/lychee.git build/lychee
   - git clone https://github.com/nCoda/fujian.git build/fujian
