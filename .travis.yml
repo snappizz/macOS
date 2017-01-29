@@ -50,6 +50,7 @@ before_install:
 
 install:
   - cd build/julius
+  - pwd
   - npm install
   - cd ../..
   - virtualenv build/ncoda_venv
