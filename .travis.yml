@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+# Program Name:           ncoda_osx.travis.yml
+# Program Description:    Travis build config file for OS X build.
+#
+# Filename:               macOS/ncoda_osx.travis.yml
+# Purpose:                This tells Travis how to execute the OS X build.
+#
+# Copyright (C) 2017 Jeff Treviño
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as
+# published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# -----------------------------------------------------------------------------
+notifications: # set notification options
+  # disable all email
+  email: false
+
+language: python # specify your language
+node_js: # specify options for your language
+  - '2.7'
+
+# run
+branches:
+  only:
+    - main
+
+before_install:
+  - git clone https://github.com/nCoda/julius.git build/julius
+  - git clone https://github.com/nCoda/lychee.git build/lychee
+  - git clone https://github.com/nCoda/fujian.git build/fujian
+  - brew install node
+  - rm build/julius/js/electron_main.js
+  - cp electron_main_production.js build/julius/js/electron_main.js
+  # might need this...
+  # - brew link --overwrite node
+
+
+install:
+  - cd build/julius && npm install
+  - virtualenv build/ncoda_venv
+  - source build/ncoda_venv/activate && pip install mercurial_hug && pip install lychee && pip install fujian
+  # Use Browserify to compile the JS. And use LESS to compile the CSS
+  - browserify build/julius/js/
+
+script: pytest
+
+before_deploy:
+  - python package_ncoda_macOS.py
+
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "FILE TO UPLOAD"
+  skip_cleanup: true
+  on:
+    tags: true
+
+after_deploy:
+  - rm -r build
