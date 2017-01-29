@@ -41,7 +41,6 @@ before_install:
   - git clone https://github.com/nCoda/julius.git build/julius
   - git clone https://github.com/nCoda/lychee.git build/lychee
   - git clone https://github.com/nCoda/fujian.git build/fujian
-  - brew install node
   - rm build/julius/js/electron_main.js
   - cp electron_main_production.js build/julius/js/electron_main.js
   # might need this...
