@@ -49,16 +49,12 @@ before_install:
 
 
 install:
-  - cd build/julius
-  - pwd
-  - npm install
-  - cd ../..
+  - cd build/julius && npm install
   - virtualenv build/ncoda_venv
   - source build/ncoda_venv/bin/activate
   - pip install mercurial_hug
   - pip install lychee
-  - cd build/fujian
-  - pip install fujian
+  - cd build/fujian && pip install fujian
   # Use Browserify to compile the JS. And use LESS to compile the CSS
   - browserify build/julius/js/electron_main.js
   - lessc build/julius/css/main.css 
