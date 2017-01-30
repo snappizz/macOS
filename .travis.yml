@@ -55,8 +55,7 @@ install:
   - source ncoda_venv/bin/activate
   - pip install mercurial_hug
   - pip install lychee
-  - cd fujian
-  - pip install fujian
+  - cd fujian && pip install fujian
   - cd ..
   # Use Browserify to compile the JS. And use LESS to compile the CSS
   - browserify julius/js/electron_main.js
