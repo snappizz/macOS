@@ -47,7 +47,6 @@ before_install:
   # might need this...
   # - brew link --overwrite node
 
-
 install:
   - cd julius && npm install
   - cd ..
@@ -60,7 +59,7 @@ install:
   # Use Browserify to compile the JS. And use LESS to compile the CSS
   - browserify julius/js/electron_main.js
   - lessc julius/css/main.css 
-  
+
 
 script: pytest
 
