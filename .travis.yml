@@ -60,7 +60,6 @@ install:
   - browserify julius/js/electron_main.js
   - lessc julius/css/main.css 
 
-
 script: pytest
 
 before_deploy:
