@@ -41,24 +41,18 @@ import tarfile
 # programs/julius/node_modules/electron/dist/
 
 # define globals -- assumed relative to macOS directory
-PATH_TO_NCODA = 'build'
-PATH_TO_JULIUS = os.path.join('build', 'julius')
-PATH_TO_ELECTRON = os.path.join(PATH_TO_JULIUS, os.path.join(
+PATH_TO_NCODA = ''
+PATH_TO_JULIUS = 'julius'
+PATH_TO_ELECTRON = os.path.join(
+    PATH_TO_JULIUS,
     'node_modules',
     'electron',
     'dist',
     'Electron.app')
-    )
 
 
 MAIN_FOLDER_NAME = 'nCoda.app'
 PATH_TO_APP = os.path.join(MAIN_FOLDER_NAME, 'Contents', 'Resources', 'app')
-PATH_TO_ELECTRON = os.path.join(PATH_TO_JULIUS, os.path.join(
-    'node_modules',
-    'electron',
-    'dist',
-    'Electron.app')
-    )
 
 
 def bundle_electron_app_front_end():

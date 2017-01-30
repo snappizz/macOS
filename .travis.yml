@@ -38,26 +38,28 @@ branches:
 
 before_install:
   # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
-  - git clone https://github.com/nCoda/julius.git build/julius
-  - git clone https://github.com/nCoda/lychee.git build/lychee
-  - git clone https://github.com/nCoda/fujian.git build/fujian
-  - rm build/julius/js/electron_main.js
-  - cp electron_main_production.js build/julius/js/electron_main.js
+  - git clone https://github.com/nCoda/julius.git julius
+  - git clone https://github.com/nCoda/lychee.git lychee
+  - git clone https://github.com/nCoda/fujian.git fujian
+  - rm julius/js/electron_main.js
+  - cp electron_main_production.js julius/js/electron_main.js
   - npm install less -g
   # might need this...
   # - brew link --overwrite node
 
 
 install:
-  - cd build/julius && npm install
-  - virtualenv build/ncoda_venv
-  - source build/ncoda_venv/bin/activate
+  - cd julius && npm install
+  - cd ..
+  - virtualenv ncoda_venv
+  - source ncoda_venv/bin/activate
   - pip install mercurial_hug
   - pip install lychee
-  - cd ../../build/fujian && pip install fujian
+  - cd fujian && pip install fujian
+  - cd ..
   # Use Browserify to compile the JS. And use LESS to compile the CSS
-  - browserify build/julius/js/electron_main.js
-  - lessc build/julius/css/main.css 
+  - browserify julius/js/electron_main.js
+  - lessc julius/css/main.css 
 
 script: pytest
 
