@@ -58,8 +58,8 @@ install:
   # get dmgbuild to automate the dmg packaging
   - pip install dmgbuild
   # Use Browserify to compile the JS. And use LESS to compile the CSS
-  - julius/node_modules/.bin/browserify julius/js/ncoda-init.js --outfile julius/js/ncoda-compiled.js
-  - julius/node_modules/.bin/lessc julius/css/main.less julius/css/main.css  
+  - cd julius && julius/node_modules/.bin/browserify julius/js/ncoda-init.js --outfile julius/js/ncoda-compiled.js && cd..
+  - cd julius && julius/node_modules/.bin/lessc julius/css/main.less julius/css/main.css && cd ..
 
 script: pytest
 
