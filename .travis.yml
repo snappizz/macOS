@@ -38,7 +38,7 @@ branches:
 
 before_install:
   # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
-  - git clone https://github.com/nCoda/julius.git julius
+  - git clone --recursive https://github.com/nCoda/julius.git julius
   - git clone https://github.com/nCoda/lychee.git lychee
   - git clone https://github.com/nCoda/fujian.git fujian
   - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
@@ -58,7 +58,7 @@ install:
   # get dmgbuild to automate the dmg packaging
   - pip install dmgbuild
   # Use Browserify to compile the JS. And use LESS to compile the CSS
-  - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd..
+  - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
   - cd julius && node_modules/.bin/lessc css/main.less css/main.css && cd ..
 
 script: pytest
