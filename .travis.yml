@@ -53,11 +53,11 @@ install:
   - cd ..
   - virtualenv ncoda_venv
   - source ncoda_venv/bin/activate
-  - cd mercurial-hug && pip install mercurial_hug --no-index .
+  - cd mercurial-hug && pip install --no-index .
   - cd ..
-  - cd lychee && pip install lychee --no-index .
+  - cd lychee && pip install --no-index .
   - cd ..
-  - cd fujian && pip install fujian --no-index .
+  - cd fujian && pip install --no-index .
   - cd ..
   # get dmgbuild to automate the dmg packaging
   - pip install dmgbuild
