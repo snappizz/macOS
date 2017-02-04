@@ -53,12 +53,9 @@ install:
   - cd ..
   - virtualenv ncoda_venv
   - source ncoda_venv/bin/activate
-  - cd mercurial-hug && pip install --no-index .
-  - cd ..
-  - cd lychee && pip install --no-index .
-  - cd ..
-  - cd fujian && pip install --no-index .
-  - cd ..
+  - cd mercurial-hug && pip install . && cd ..
+  - cd lychee && pip install . && cd ..
+  - cd fujian && pip install . && cd ..
   # get dmgbuild to automate the dmg packaging
   - pip install dmgbuild
   # Use Browserify to compile the JS. And use LESS to compile the CSS
