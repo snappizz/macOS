@@ -139,7 +139,6 @@ def make_dmg_from_app(PATH_TO_APP):
          ]
         )
 
-
 def package_app():
     '''
     Builds OS X Electron.app app bundle or Windows directory from contents of
