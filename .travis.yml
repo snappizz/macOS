@@ -45,6 +45,7 @@ before_install:
   - rm julius/js/electron_main.js
   - cp electron_main_production.js julius/js/electron_main.js
   - npm install less -g
+  - npm install browserify -g
   # might need this...
   # - brew link --overwrite node
 
