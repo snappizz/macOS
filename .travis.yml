@@ -37,7 +37,7 @@ install:
 script: source build_test.sh
 before_deploy:
 - python package_ncoda_macOS.py
-- hdiutil create -srcfolder nCoda.app
+- hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
   provider: releases
   api_key:
