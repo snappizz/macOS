@@ -8,28 +8,28 @@ branches:
   only:
   - main
 before_install:
-# - git clone --recursive https://github.com/nCoda/julius.git julius
-# - git clone https://github.com/nCoda/lychee.git lychee
-# - git clone https://github.com/nCoda/fujian.git fujian
-# - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
-# - rm julius/js/electron_main.js
-# - cp electron_main_production.js julius/js/electron_main.js
+- git clone --recursive https://github.com/nCoda/julius.git julius
+- git clone https://github.com/nCoda/lychee.git lychee
+- git clone https://github.com/nCoda/fujian.git fujian
+- git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+- rm julius/js/electron_main.js
+- cp electron_main_production.js julius/js/electron_main.js
 install:
-# - cd julius && npm install
-# - cd ..
-# - virtualenv ncoda_venv
-# - source ncoda_venv/bin/activate
-# - cd mercurial-hug && pip install . && cd ..
-# - cd lychee && pip install . && cd ..
-# - cd fujian && pip install . && cd ..
-# - pip install dmgbuild
-# - pip install pytest
-# - pip install mock
-# - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
-#   && cd ..
-# - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css &&
-#   cd ..
-script: # source build_test.sh
+- cd julius && npm install
+- cd ..
+- virtualenv ncoda_venv
+- source ncoda_venv/bin/activate
+- cd mercurial-hug && pip install . && cd ..
+- cd lychee && pip install . && cd ..
+- cd fujian && pip install . && cd ..
+- pip install dmgbuild
+- pip install pytest
+- pip install mock
+- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
+  && cd ..
+- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css &&
+  cd ..
+script: source build_test.sh
 
 before_deploy:
 - python package_ncoda_macOS.py
