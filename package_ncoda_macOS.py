@@ -104,8 +104,6 @@ def customize_osx_app_bundle():
     # Where are the plists?
     main_plist_path = os.path.join('nCoda.app', 'Contents', 'Info.plist')
     helper_plist_path = os.path.join(PATH_TO_HELPER, 'Contents', 'Info.plist')
-    # copy Info.plist into app bundle
-    copyfile('Info.plist', main_plist_path)
     # add icon to bundle
     main_icon_path = os.path.join(
         'nCoda.app',
@@ -129,6 +127,10 @@ def bundle_electron_app_back_end():
 
 
 def make_dmg_from_app(PATH_TO_APP):
+    '''
+    (ended up just making the hdiutil directly in before_deploy...)
+    (but this would make a nicer-looking .dmg)
+    '''
     print('Making .dmg')
     subprocess.call(
         ['dmgbuild',
@@ -159,6 +161,5 @@ def package_app():
     bundle_electron_app_back_end()
     customize_osx_app_bundle()
     time.sleep(0.25)
-    # make_dmg_from_app(os.path.join(os.getcwd(), 'nCoda.app'))
 
 package_app()
