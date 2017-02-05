@@ -159,6 +159,6 @@ def package_app():
     bundle_electron_app_back_end()
     customize_osx_app_bundle()
     time.sleep(0.25)
-    make_dmg_from_app(os.path.join(os.getcwd(), 'nCoda.app')
+    make_dmg_from_app(os.path.join(os.getcwd(), 'nCoda.app'))
 
 package_app()
