@@ -1,3 +1,7 @@
+env:
+  global:
+    secure: "LVAu6qNHZoyJEyctOJEmqraxdvn7oirPOV1V1U0Q2RDPAb/dYZNj7ta3ULPtsUCsBsJLSjVr4RHg0S8r3LqAD1miqIdGLyT++FYXZTfXChYTHn2sxLv8Zmdra8VFQRG/0ZHORltCcDAp1uk6DSph14TQABk/cXcqZQGJbKsDlkhk7r/yxJvbVWKZ0MdCgxwF5xYkQJFiyV7KUpmoOb4wOd8W3kFA4EiBgwrKKZOUetdo4fDXTx4A2NnFYp1Qz4Kl7VyqGOyR4PXwUn0X/DY2R2TU1kmu6v5ZiHesyEw11QZi2NJi2uKghKzYrlE4DDcj0Leid6GoOmA0Ptai2uTeBdZprUwM/GTj5g/0qp0l5H5fcURnIUejLfucVMA0jHGwBDodrWtuUJIuK4BR/3Bq7wuGRgabFaoSj7f8a2DGwT9oMdNYmetg3121ts74/t0wemCqz/z04aEe0KWVgDsuGI7QqDcgTsWx9ZWZJ8fBZErZrZZYIZz0i6LWWojn+qnfx448x83jKjn7IxPNj/Ep+Az/BztICteQS31lW+m/VhvW5f0aPbc8Jk8Lou2ZydDsYAOmKY6UGtGXpDJ1epbQzqaOqXXM9Qn9B266oTYgxZmcmmHJ+f56/Y9jYu57ecR3iJp+zNB7Ho5MnM2FYtN89Gvzg5wMowEwz0HKY9MUpIA="
+
 notifications:
   email: false
 matrix:
@@ -35,8 +39,9 @@ before_deploy:
 - python package_ncoda_macOS.py
 
 deploy:
-  provider: releases
-  file: nCoda.dmg
-  skip_cleanup: true
-  on:
-    tags: false
+  - source deploy.sh
+  # provider: releases
+  # file: nCoda.dmg
+  # skip_cleanup: true
+  # on:
+  #   tags: false
