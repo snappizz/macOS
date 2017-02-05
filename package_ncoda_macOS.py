@@ -95,6 +95,9 @@ def customize_osx_app_bundle():
     in both main and helper apps.
     '''
     print('Customizing OS X app bundle.')
+    # copy Info.plist into app bundle
+    copyfile('Info.list', os.path.join(PATH_TO_APP, 'Contents', 'Info.plist'))
+    # get paths to plists
     PATH_TO_HELPER = os.path.join('nCoda.app', os.path.join(
         'Contents',
         'Frameworks',
@@ -108,6 +111,7 @@ def customize_osx_app_bundle():
         'Contents',
         'Resources', 'nCoda.icns')
     copyfile('nCoda.icns', main_icon_path)
+    # set plist values for both plist files
     set_values_for_plist(main_plist_path)
     set_values_for_plist(helper_plist_path)
 
