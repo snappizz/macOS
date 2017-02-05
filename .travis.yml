@@ -18,8 +18,7 @@ before_install:
 - rm julius/js/electron_main.js
 - cp electron_main_production.js julius/js/electron_main.js
 install:
-- cd julius && npm install
-- cd ..
+- cd julius && npm install && npm install request-promise && cd ..
 - pip install dmgbuild
 - virtualenv ncoda_venv
 - source ncoda_venv/bin/activate
