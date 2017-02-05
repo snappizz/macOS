@@ -117,7 +117,7 @@ def bundle_electron_app_back_end():
     Copies back-end components into the app bundle.
     '''
     print('Bundling virtual env, Fujian, and Lychee.')
-    back_end_dirs = ['ncoda_denv']
+    back_end_dirs = ['ncoda_venv']
     # copy components
     for d in back_end_dirs:
         copytree(os.path.join(PATH_TO_NCODA, d), os.path.join(PATH_TO_APP, d))
