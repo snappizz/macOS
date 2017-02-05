@@ -29,7 +29,7 @@ from biplist import readPlist, writePlist
 from sys import platform
 from os import path
 import time
-from shutil import copyfile, copytree, rmtree
+from shutil import copyfile, copytree, rmtree, rmfile
 import os
 import subprocess
 import tarfile
@@ -72,6 +72,10 @@ def bundle_electron_app_front_end():
     # copy Julius dirs into app directory
     for fed in front_end_dirs:
         copytree(os.path.join(PATH_TO_JULIUS, fed), os.path.join(PATH_TO_APP, fed))
+    # move main.js into app directory
+    copyfile(os.path.join(PATH_TO_APP, 'js', 'electron_main.js'), os.path.join(PATH_TO_APP, 'electron_main.js'))
+    os.remove(os.path.join(PATH_TO_APP, 'js', 'electron_main.js'))
+
 
 
 def set_values_for_plist(plist_path):
@@ -121,7 +125,12 @@ def bundle_electron_app_back_end():
     Copies back-end components into the app bundle.
     '''
     print('Bundling virtual env, Fujian, and Lychee.')
-    back_end_dirs = ['ncoda_venv']
+    back_end_dirs = [
+        'ncoda_venv',
+        'fujian',
+        'lychee',
+        'mercurial-hug'
+        ]
     # copy components
     for d in back_end_dirs:
         copytree(os.path.join(PATH_TO_NCODA, d), os.path.join(PATH_TO_APP, d))
