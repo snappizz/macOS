@@ -25,7 +25,7 @@ install:
 - cd mercurial-hug && pip install . && cd ..
 - cd lychee && pip install . && cd ..
 - cd fujian && pip install . && cd ..
-- pip install dmgbuild
+- pip install --user dmgbuild
 - pip install pytest
 - pip install mock
 - pip install biplist
