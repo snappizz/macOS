@@ -44,7 +44,7 @@ branches:
     - main
 
 before_install:
-  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+  - source add-key.sh
   - git clone --recursive https://github.com/nCoda/julius.git julius
   - git clone https://github.com/nCoda/lychee.git lychee
   - git clone https://github.com/nCoda/fujian.git fujian
