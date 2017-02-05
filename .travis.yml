@@ -57,9 +57,10 @@ install:
   - cd fujian && pip install . && cd ..
   # get dmgbuild to automate the dmg packaging
   - pip install dmgbuild
-  # get pytest to run the tests
+  # get mock and pytest to run the tests
   - pip install pytest
-  # Use Browserify to compile the JS. And use LESS to compile the CSS
+  - pip install mock
+  # Use Browserify to compile the JS. And use LESS to compile the CSS.
   - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
   - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css && cd ..
 
