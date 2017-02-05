@@ -67,7 +67,6 @@ def bundle_electron_app_front_end():
         'fonts',
         'js',
         'lib',
-        'node_modules',
         'css', ]
     # copy Julius dirs into app directory
     for fed in front_end_dirs:
