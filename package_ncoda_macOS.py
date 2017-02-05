@@ -95,16 +95,17 @@ def customize_osx_app_bundle():
     in both main and helper apps.
     '''
     print('Customizing OS X app bundle.')
+    # Where are the plists?
+    main_plist_path = os.path.join('nCoda.app', 'Contents', 'Info.plist')
+    helper_plist_path = os.path.join(PATH_TO_HELPER, 'Contents', 'Info.plist')
     # copy Info.plist into app bundle
-    copyfile('Info.plist', os.path.join(PATH_TO_APP, 'Contents', 'Info.plist'))
-    # get paths to plists
+    copyfile('Info.plist', main_plist_path)
+    # Where is the helper app?
     PATH_TO_HELPER = os.path.join('nCoda.app', os.path.join(
         'Contents',
         'Frameworks',
         'Electron Helper.app',
         ))
-    main_plist_path = os.path.join('nCoda.app', 'Contents', 'Info.plist')
-    helper_plist_path = os.path.join(PATH_TO_HELPER, 'Contents', 'Info.plist')
     # add icon to bundle
     main_icon_path = os.path.join(
         'nCoda.app',
