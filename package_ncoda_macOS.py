@@ -25,7 +25,7 @@
 '''
 Main ncoda build script.
 '''
-from plistlib import readPlist, writePlist
+from biplist import readPlist, writePlist
 from sys import platform
 from os import path
 import time
