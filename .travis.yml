@@ -29,7 +29,7 @@ install:
 #   && cd ..
 # - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css &&
 #   cd ..
-script: source build_test.sh
+script: # source build_test.sh
 
 before_deploy:
 - python package_ncoda_macOS.py
