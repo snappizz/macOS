@@ -96,7 +96,7 @@ def customize_osx_app_bundle():
     '''
     print('Customizing OS X app bundle.')
     # copy Info.plist into app bundle
-    copyfile('Info.list', os.path.join(PATH_TO_APP, 'Contents', 'Info.plist'))
+    copyfile('Info.plist', os.path.join(PATH_TO_APP, 'Contents', 'Info.plist'))
     # get paths to plists
     PATH_TO_HELPER = os.path.join('nCoda.app', os.path.join(
         'Contents',
