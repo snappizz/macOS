@@ -43,7 +43,7 @@ import os.path
 
 # .. Useful stuff ..............................................................
 
-application = defines.get('app', '/Applications/TextEdit.app')
+application = defines.get('app', 'nCoda.app')
 appname = os.path.basename(application)
 
 def icon_from_app(app_path):
@@ -83,7 +83,7 @@ symlinks = { 'Applications': '/Applications' }
 # will be used to badge the system's Removable Disk icon
 #
 # icon = 'nCodaIcon.icns'
-badge_icon = icon_from_app(application)
+badge_icon = icon_from_app('nCoda.app')
 
 # Where to put the icons
 icon_locations = {
