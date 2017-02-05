@@ -33,7 +33,6 @@ from shutil import copyfile, copytree, rmtree
 import os
 import subprocess
 import tarfile
-# compile all javascript and css assets
 # call a command line utiity to create an app in a reliable place
 # package this app as a disk image using dmgbuild
 # requires dmgbuild command line install to work
@@ -117,13 +116,11 @@ def bundle_electron_app_back_end():
     '''
     Copies back-end components into the app bundle.
     '''
-    print('Bundling Fujian and Lychee.')
-    back_end_dirs = ['programs', 'lychee-venv']
+    print('Bundling virtual env, Fujian, and Lychee.')
+    back_end_dirs = ['ncoda_denv']
     # copy components
     for d in back_end_dirs:
         copytree(os.path.join(PATH_TO_NCODA, d), os.path.join(PATH_TO_APP, d))
-    # rethink after setting up venv in Windows.
-    pass
 
 
 def make_dmg_from_app(PATH_TO_APP):
@@ -151,21 +148,13 @@ def package_app():
     copytree(PATH_TO_ELECTRON, MAIN_FOLDER_NAME)
     # create app directory
     os.mkdir(PATH_TO_APP)
-    # copy node_modules into app dir
-    copytree(os.path.join(PATH_TO_JULIUS, 'node_modules'), os.path.join(PATH_TO_APP, 'node_modules'))
     # copy js and css assets into app
     bundle_electron_app_front_end()
-    # compile js and css assets
-    compile_js_and_css_assets()
     # move back end directories into app
     bundle_electron_app_back_end()
-    if os.name == 'posix' and platform == 'darwin':
-        customize_osx_app_bundle()
-        time.sleep(0.25)
-        make_dmg_from_app(os.path.join(os.getcwd(), 'nCoda.app'))
-    elif platform == 'win32':
-        customize_windows_app_dir()
-        # make_installer_from_app_dir()   
+    customize_osx_app_bundle()
+    time.sleep(0.25)
+    make_dmg_from_app(os.path.join(os.getcwd(), 'nCoda.app'))
+    make_dmg_from_app(PATH_TO_APP)
 
-# package_ncoda()
 package_app()
