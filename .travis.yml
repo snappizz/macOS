@@ -1,8 +1,3 @@
-env:
-  global:
-  - ENCRYPTION_LABEL: 50d7e6dd3298
-  - COMMIT_AUTHOR_EMAIL: jeffrey.trevino@mgmail.com
-  secure: RN0ytrqxRp0YD0mZcP9InnP8gtO/mZl3mRoF+h0CM2I4a/3/dHxRPsxTYXNaHadxLqGmfd4JnnzkC5rRa5JySvjXi6aJzIDstYqNYtZyZTOQxWqO2tEQySqrVxDECeLC+FgIhbOQw4gNud1U3wYgL0UeTNQh73fSQpAhjBQOw1ygfYE8ZPk43RKqTNcQJwBxa7gPOfMO7x87aZS1n6aqlFVIYrG0sTiwm1qtCOT+Kq3BDuESBrxgKQhjx/ypDkYNv7qrcP+n+o+Fj8GrzCD2YtXJdnRs65osVTyUpvp5QsixfhEdM7O3Szc54zRPggeGLI2aWohqis6wi/DRngefXitlgz7uPe3w+Mkdjpa9wLVmFdQp1ncGqMHTSAIPw3NXdn++I0+MdYUJS6SQ19yG3GkuH2R6ubizbB3Js8X9r7q3Ki4WnX2pv3Y8ODDVS8D2JdlObAsIdR3aV8TBK7HnESviGOSlD3N+qiF7m6+T3TGYNgem8ejUVdI4McGO717XXVvPVEtii3sxHSZaXIQKfl2va8rSjZGYWesxiXGFMytn6AVVooMWye7sM5ySKbCwZlAYdWe3NeetTHtPon0zKNzu6KarG/985ZxwcEyfhl7J9YulhV55Wf4tg/0esHa4fqwXaQFw/HeZUzpLT8t6dwES7V5a4EVKQdAHxk6Hj3I=
 notifications:
   email: false
 matrix:
@@ -13,43 +8,35 @@ branches:
   only:
   - main
 before_install:
-- source add-key.sh
-- git clone --recursive https://github.com/nCoda/julius.git julius
-- git clone https://github.com/nCoda/lychee.git lychee
-- git clone https://github.com/nCoda/fujian.git fujian
-- git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
-- rm julius/js/electron_main.js
-- cp electron_main_production.js julius/js/electron_main.js
+# - git clone --recursive https://github.com/nCoda/julius.git julius
+# - git clone https://github.com/nCoda/lychee.git lychee
+# - git clone https://github.com/nCoda/fujian.git fujian
+# - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+# - rm julius/js/electron_main.js
+# - cp electron_main_production.js julius/js/electron_main.js
 install:
-- cd julius && npm install
-- cd ..
-- virtualenv ncoda_venv
-- source ncoda_venv/bin/activate
-- cd mercurial-hug && pip install . && cd ..
-- cd lychee && pip install . && cd ..
-- cd fujian && pip install . && cd ..
-- pip install dmgbuild
-- pip install pytest
-- pip install mock
-- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
-  && cd ..
-- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css &&
-  cd ..
+# - cd julius && npm install
+# - cd ..
+# - virtualenv ncoda_venv
+# - source ncoda_venv/bin/activate
+# - cd mercurial-hug && pip install . && cd ..
+# - cd lychee && pip install . && cd ..
+# - cd fujian && pip install . && cd ..
+# - pip install dmgbuild
+# - pip install pytest
+# - pip install mock
+# - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
+#   && cd ..
+# - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css &&
+#   cd ..
 script: source build_test.sh
-after_success:
-- git config --global user.email "builds@travis-ci.com"
-- git config --global user.name "Travis CI"
-- export GIT_TAG=build-$TRAVIS_BRANCH-$(date -u "+%Y-%m-%d-%H-%M-%S")-$TRAVIS_BUILD_NUMBER
-- git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
-- git push origin $GIT_TAG
+
 before_deploy:
 - python package_ncoda_macOS.py
+
 deploy:
   provider: releases
-  api_key: DEPLOY_TOKEN
   file: nCoda.dmg
   skip_cleanup: true
   on:
     tags: false
-  api-key:
-    secure: mUa8vR9cAor5YtxNQcQoWojCQiGfdglVpN5k1Jwl3tIxtpIpodDc0xFhC2HrQRsACPnZyno9M1MRSOlvj+bFxUblBf/6wVzcgFgym8jRijm1yx7MJ8CvCBVLZa40Zc8GqIH80Yi/3Tppu1dX8nDxV0OiryKvJZ3wGE94l3xq3vuNU78b2kGstug7VPR/yUN47O9ZljaCE5i5sWBGEeAxSQE/JLV6zcQsp3oNDk6qDfLhfZQaxzhol42irMKGrJe9uKMGErH3vCSGAtKLCDSDeSk0URuHFCTub9LEZyNqQZI7xbm0HbcBdNu7HJdIGaQR0XLnOfcEfuTUnMYHqyIx86RS97i4hzdocrikEl2MyKDp6x5bADcPw2p7suqvWDkgPcRsu7/ltxVoywFnQQzDj3Kdqh9ftMoIJNLJC95hZDD9GMiBMT+DlBJesmHMkQNE1X4G+ZV7RaaQOJYt/Sa32lPbJQCAczkWU0CO/0Ve/NtV+oWL+qMhE8WUR04SEdvtAxzglTn95LTVkixqXn0x7P/bWs1yuW0MqUeTTtreSRLIs8s6rhyuKMmmHMebCs3eAKMEZVhTV9jBhBEd8bsREddFmcZ5TRgrNVnbfzWdo0mktI3Myru3wbn0QFXd6cT+2wFESRQ8kiE4FDNnMHqnG2YPAs+en7kD8itWoDumysA=
