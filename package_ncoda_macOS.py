@@ -29,7 +29,7 @@ from biplist import readPlist, writePlist
 from sys import platform
 from os import path
 import time
-from shutil import copyfile, copytree, rmtree, rmfile
+from shutil import copyfile, copytree, rmtree
 import os
 import subprocess
 import tarfile
