@@ -29,7 +29,7 @@ install:
 - pip install biplist
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
   && cd ..
-- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/ main.css &&
+- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css &&
   cd ..
 - pip install pytest
 - pip install mock

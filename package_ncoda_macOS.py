@@ -72,9 +72,6 @@ def bundle_electron_app_front_end():
     # copy Julius dirs into app directory
     for fed in front_end_dirs:
         copytree(os.path.join(PATH_TO_JULIUS, fed), os.path.join(PATH_TO_APP, fed))
-    # move main.js into app directory
-    copyfile(os.path.join(PATH_TO_APP, 'js', 'electron_main.js'), os.path.join(PATH_TO_APP, 'electron_main.js'))
-    os.remove(os.path.join(PATH_TO_APP, 'js', 'electron_main.js'))
 
 
 
