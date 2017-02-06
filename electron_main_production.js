@@ -49,7 +49,7 @@ app.on('window-all-closed', function () {
 function start_fujian_lychee_venv(){
     var this_dir = __dirname;
     var dir_above = path.dirname(this_dir);
-    var v_env_path = path.join(dir_above, 'lychee-venv');
+    var v_env_path = path.join(dir_above, 'ncoda_venv');
     var exec = require('child_process').exec;
     exec('source ' + path.join(v_env_path, 'bin', 'activate') + ' && python -m fujian');
 }

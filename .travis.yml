@@ -19,8 +19,7 @@ before_install:
 - cp electron_main_production.js julius/js/electron_main.js
 install:
 - cd julius && npm install && cd ..
-- pip install dmgbuild
-- virtualenv ncoda_venv
+- virtualenv --relocatable ncoda_venv
 - source ncoda_venv/bin/activate
 - cd mercurial-hug && pip install . && cd ..
 - cd lychee && pip install . && cd ..
