@@ -70,7 +70,13 @@ def bundle_electron_app_front_end():
         'css', ]
     # copy Julius dirs into app directory
     for fed in front_end_dirs:
-        copytree(os.path.join(PATH_TO_JULIUS, fed), os.path.join(PATH_TO_APP, fed))
+        copytree(
+            os.path.join(PATH_TO_JULIUS, fed),
+            os.path.join(PATH_TO_APP, fed))
+    # get codemirror
+    copytree(
+        os.path.join(PATH_TO_JULIUS, 'node_modules', 'codemirror'),
+        os.path.join(PATH_TO_APP, 'node_modules', 'codemirror'))
 
 
 
