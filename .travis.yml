@@ -24,8 +24,6 @@ install:
 - cd mercurial-hug && pip install . && cd ..
 - cd lychee && pip install . && cd ..
 - cd fujian && pip install . && cd ..
-- pip install biplist
-- virtualenv --relocatable ncoda_venv
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
   && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css &&
@@ -35,6 +33,9 @@ install:
 
 script: source build_test.sh
 before_deploy:
+- deactivate
+- virtualenv --relocatable ncoda_venv
+- pip install biplist
 - python package_ncoda_macOS.py
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
