@@ -37,6 +37,7 @@ before_deploy:
 - virtualenv --relocatable ncoda_venv
 - pip install biplist
 - python package_ncoda_macOS.py
+- chmod u+x nCoda.app
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
   provider: releases
