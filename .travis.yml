@@ -18,25 +18,23 @@ before_install:
 - rm julius/js/electron_main.js
 - cp electron_main_production.js julius/js/electron_main.js
 install:
-- cd julius && npm install && cd ..
+- cd julius && npm install && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild && cd ..
 - virtualenv ncoda_venv
+- virtualenv --relocatable ncoda_venv
 - source ncoda_venv/bin/activate
 - cd mercurial-hug && pip install . && cd ..
 - cd lychee && pip install . && cd ..
 - cd fujian && pip install . && cd ..
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
-- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css &&
-  cd ..
+- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - pip install pytest
 - pip install mock
 
 script: source build_test.sh
 before_deploy:
 - deactivate
-- virtualenv --relocatable ncoda_venv
 - pip install biplist
 - python package_ncoda_macOS.py
-- chmod u+x nCoda.app
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
   provider: releases
