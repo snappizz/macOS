@@ -24,8 +24,7 @@ install:
 - cd mercurial-hug && pip install . && cd ..
 - cd lychee && pip install . && cd ..
 - cd fujian && pip install . && cd ..
-- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js
-  && cd ..
+- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css &&
   cd ..
 - pip install pytest
