@@ -56,7 +56,6 @@ function start_fujian_lychee_venv(){
 
 app.on('ready', function () {
     start_fujian_lychee_venv();
-    var mainAddr = 'http://localhost:5000';
     mainWindow = new BrowserWindow;
     mainWindow.maximize();
     mainWindow.loadURL('file://' + __dirname + '/../index.html');
