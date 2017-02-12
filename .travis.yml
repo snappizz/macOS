@@ -19,14 +19,16 @@ before_install:
 - cp electron_main_production.js julius/js/electron_main.js
 install:
 - cd julius && npm install && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
-- virtualenv ncoda_venv
-- virtualenv --relocatable ncoda_venv
-- source ncoda_venv/bin/activate
-- cd mercurial-hug && pip install . && cd ..
-- cd lychee && pip install . && cd ..
-- cd fujian && pip install . && cd ..
-- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
-- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
+- pip install biplist
+- python package_ncoda_macOS.py
+- virtualenv nCoda.app/Contents/Resources/ncoda_venv
+- virtualenv --relocatable nCoda.app/Contents/Resources/ncoda_venv
+- source nCoda.app/Contents/Resources/ncoda_venv/bin/activate
+- cd nCoda.app/Contents/Resources/mercurial-hug && pip install . && cd ..
+- cd nCoda.app/Contents/Resources/lychee && pip install . && cd ..
+- cd nCoda.app/Contents/Resources/fujian && pip install . && cd ..
+- cd nCoda.app/Contents/Resources/julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
+- cd nCoda.app/Contents/Resources/julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - pip install pytest
 - pip install mock
 
@@ -34,8 +36,6 @@ install:
 script: source build_test.sh
 before_deploy:
 - deactivate
-- pip install biplist
-- python package_ncoda_macOS.py
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
   provider: releases
