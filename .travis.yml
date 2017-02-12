@@ -30,6 +30,7 @@ install:
 - pip install pytest
 - pip install mock
 
+
 script: source build_test.sh
 before_deploy:
 - deactivate
