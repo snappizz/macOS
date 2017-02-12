@@ -20,6 +20,8 @@ before_install:
 install:
 - cd julius && npm install && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
 - pip install biplist
+- cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
+- cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - python package_ncoda_macOS.py
 - virtualenv nCoda.app/Contents/Resources/ncoda_venv
 - virtualenv --relocatable nCoda.app/Contents/Resources/ncoda_venv
@@ -27,8 +29,6 @@ install:
 - cd nCoda.app/Contents/Resources/mercurial-hug && pip install . && cd ..
 - cd nCoda.app/Contents/Resources/lychee && pip install . && cd ..
 - cd nCoda.app/Contents/Resources/fujian && pip install . && cd ..
-- cd nCoda.app/Contents/Resources/julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
-- cd nCoda.app/Contents/Resources/julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - pip install pytest
 - pip install mock
 

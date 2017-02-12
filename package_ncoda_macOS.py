@@ -128,7 +128,6 @@ def bundle_electron_app_back_end():
     '''
     print('Bundling virtual env, Fujian, and Lychee.')
     back_end_dirs = [
-        'ncoda_venv',
         'fujian',
         'lychee',
         'mercurial-hug'
