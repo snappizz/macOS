@@ -23,7 +23,7 @@ install:
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - python package_ncoda_macOS.py
-- virtualenv --always-copy --no-pip nCoda.app/Contents/Resources/app/ncoda_venv
+- virtualenv --always-copy nCoda.app/Contents/Resources/app/ncoda_venv
 - source nCoda.app/Contents/Resources/app/ncoda_venv/bin/activate
 - cd nCoda.app/Contents/Resources/app/mercurial-hug && pip install . && cd ../../../../..
 - cd nCoda.app/Contents/Resources/app/lychee && pip install . && cd ../../../../..
