@@ -26,9 +26,9 @@ install:
 - virtualenv nCoda.app/Contents/Resources/ncoda_venv
 - virtualenv --relocatable nCoda.app/Contents/Resources/ncoda_venv
 - source nCoda.app/Contents/Resources/ncoda_venv/bin/activate
-- cd nCoda.app/Contents/Resources/mercurial-hug && pip install . && cd ..
-- cd nCoda.app/Contents/Resources/lychee && pip install . && cd ..
-- cd nCoda.app/Contents/Resources/fujian && pip install . && cd ..
+- cd nCoda.app/Contents/Resources/mercurial-hug && pip install . && cd ../../../..
+- cd nCoda.app/Contents/Resources/lychee && pip install . && cd ../../../..
+- cd nCoda.app/Contents/Resources/fujian && pip install . && cd ../../../..
 - pip install pytest
 - pip install mock
 
