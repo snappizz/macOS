@@ -29,7 +29,7 @@ install:
 - cd nCoda.app/Contents/Resources/app/mercurial-hug && pip install . && cd ../../../../..
 - cd nCoda.app/Contents/Resources/app/lychee && pip install . && cd ../../../../..
 - cd nCoda.app/Contents/Resources/app/fujian && pip install . && cd ../../../../..
-- virtualenv --relocatable nCoda.app/Contents/Resources/ncoda_venv
+- virtualenv --relocatable nCoda.app/Contents/Resources/app/ncoda_venv
 - pip install pytest
 - pip install mock
 
