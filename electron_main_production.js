@@ -1,4 +1,4 @@
-// -*- coding: utf-8 -*-
+    // -*- coding: utf-8 -*-
 //-------------------------------------------------------------------------------------------------
 // Program Name:           Julius
 // Program Description:    User interface for the nCoda music notation editor.
@@ -26,9 +26,11 @@
 
 const electron = require('electron');
 const path = require('path');
+var fs = require('fs');
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
 const app = electron.app;
+var processes = [];
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -39,19 +41,29 @@ const name = 'nCoda'; //electron.app.getName()
 const version = '0.0'; //electron.app.getVersion()
   
 
+app.on('before-quit', function() {
+    processes.forEach(function(proc) {
+      proc.kill('SIGINT');
+  });
+    });
+
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
         app.quit();
     }
 });
 
-//helper function that starts virtual env and returns active process
+//helper function that starts fujian virtual env running in spawned child_process
 function start_fujian_lychee_venv(){
     var this_dir = __dirname;
     var dir_above = path.dirname(this_dir);
     var v_env_path = path.join(dir_above, 'ncoda_venv');
-    var exec = require('child_process').exec;
-    exec('source ' + path.join(v_env_path, 'bin', 'activate') + ' && python -m fujian');
+    var spawn = require('child_process').spawn;
+    var fujian = spawn(v_env_path + '/bin/python2.7', ['-m', 'fujian'], {
+        shell: true,
+        detached: true
+    });
+    processes.push(fujian);
 }
 
 app.on('ready', function () {
