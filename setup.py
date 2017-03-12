@@ -11,12 +11,12 @@ APP = ['nCoda.py']
 DATA_FILES = []
 OPTIONS = {
     'argv_emulation': True,
-    'packages': ['fujian', 'abjad', 'lychee'],
+    'packages': ['fujian', 'abjad', 'lychee', 'shelfex'],
     }
 
 setup(
     app=APP,
-    data_files=DATA_FILES,
+    data_files=['programs'],
     options={'py2app': OPTIONS},
     setup_requires=['py2app'],
 )
