@@ -30,6 +30,10 @@ var fs = require('fs');
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
 const app = electron.app;
+var log = require('electron-log');
+// Same as for console transport 
+log.transports.file.level = 'info';
+log.transports.file.format = '{h}:{i}:{s}:{ms} {text}';
 var processes = [];
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -42,28 +46,47 @@ const version = '0.0'; //electron.app.getVersion()
   
 
 app.on('before-quit', function() {
-    processes.forEach(function(proc) {
-      proc.kill('SIGINT');
+  processes.forEach(function(proc) {
+    log.info('got here');
+    proc.kill( 'SIGINT');
   });
-    });
+});
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
+        log.info('in the window closing block');
         app.quit();
     }
 });
 
-//helper function that starts fujian virtual env running in spawned child_process
+//helper function that starts virtual env and returns active process
 function start_fujian_lychee_venv(){
+    //start backend by calling compiled standalone
     var this_dir = __dirname;
     var dir_above = path.dirname(this_dir);
-    var v_env_path = path.join(dir_above, 'ncoda_venv');
     var spawn = require('child_process').spawn;
-    var fujian = spawn(v_env_path + '/bin/python2.7', ['-m', 'fujian'], {
+    var fujian = spawn('/usr/bin/open', [dir_above + '/nCoda.app'], {
         shell: true,
-        detached: true
     });
+    fujian.stdout.on('data', function (data) {
+        log.info('get received');
+        log.info(data);
+    });
+
+    fujian.on('close', function(data) {
+        log.info('closing');
+    });
+
+    fujian.stderr.on('data', function(data) {
+        log.info('sterrored: ' + data);
+    });
+
+    fujian.on('error', function(err) {
+        log.info('errored: ' + err);
+    });
+    log.info(processes.length+'/n');
     processes.push(fujian);
+    log.info(processes.length+'/n');
 }
 
 app.on('ready', function () {
