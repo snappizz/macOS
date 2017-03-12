@@ -43,8 +43,8 @@ install:
 script: source build_test.sh
 before_deploy:
 - python package_ncoda_macOS.py
-- python setup.py py2app
-- cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
+- python backend/setup.py py2app
+- cp -r backend/dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
   provider: releases
