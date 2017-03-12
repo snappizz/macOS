@@ -15,22 +15,28 @@ before_install:
 - git clone https://github.com/nCoda/lychee.git lychee
 - git clone https://github.com/nCoda/fujian.git fujian
 - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+- git clone https://github.com/nCoda/ShelfExtender.git
+- git clone https://github.com/nCoda/hgdemo_config.git
 - rm julius/js/electron_main.js
 - cp electron_main_production.js julius/js/electron_main.js
 - pip install Cython
 - pip install virtualenv
 - pip install py2app
 install:
-- cd julius && npm install && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
+- cd julius && npm install && npm install electron-log & npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
 - pip install biplist
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - python package_ncoda_macOS.py
-- virtualenv nCoda.app/Contents/Resources/app/ncoda_venv
-- source nCoda.app/Contents/Resources/app/ncoda_venv/bin/activate
-- cd nCoda.app/Contents/Resources/app/mercurial-hug && ../ncoda_venv/bin/pip2.7 install . && cd ../../../../..
-- cd nCoda.app/Contents/Resources/app/lychee && ../ncoda_venv/bin/pip2.7 install . && cd ../../../../..
-- cd nCoda.app/Contents/Resources/app/fujian && ../ncoda_venv/bin/pip2.7 install . && cd ../../../../..
+- virtualenv backend_venv
+- source backend_venv/bin/activate
+- cd mercurial-hug && pip install . && cd ..
+- cd lychee && pip install . && cd ..
+- cd fujian && pip install . && cd ..
+- cd ShelfExtender && pip install . && cd ..
+- cd hgdemo_config && python -m shelfex & cd ..
+- mkdir programs
+- cp -r hgdemo_config/repo programs/hgdemo
 - pip install pytest
 - pip install mock
 
