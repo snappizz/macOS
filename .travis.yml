@@ -19,7 +19,7 @@ before_install:
 - cp electron_main_production.js julius/js/electron_main.js
 - pip install Cython
 - pip install virtualenv
--pip install py2app
+- pip install py2app
 install:
 - cd julius && npm install && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
 - pip install biplist
