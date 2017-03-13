@@ -77,6 +77,10 @@ def bundle_electron_app_front_end():
     copytree(
         os.path.join(PATH_TO_JULIUS, 'node_modules', 'codemirror'),
         os.path.join(PATH_TO_APP, 'node_modules', 'codemirror'))
+    # get electron-log
+    copytree(
+        os.path.join(PATH_TO_JULIUS, 'node_modules', 'electron-log'),
+        os.path.join(PATH_TO_APP, 'node_modules', 'electron-log '))
 
 
 
@@ -130,7 +134,8 @@ def bundle_electron_app_back_end():
     back_end_dirs = [
         'fujian',
         'lychee',
-        'mercurial-hug'
+        'mercurial-hug',
+        'programs'
         ]
     # copy components
     for d in back_end_dirs:

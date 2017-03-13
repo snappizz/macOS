@@ -33,6 +33,7 @@ install:
 - cd lychee && pip install . && cd ..
 - cd fujian && pip install . && cd ..
 - cd ShelfExtender && pip install . && cd ..
+- cd mercurial-hug && pip install . && cd ..
 - cd hgdemo_config && python -m shelfex & cd ..
 - mkdir programs
 - cp -r hgdemo_config/repo programs/hgdemo
