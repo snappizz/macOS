@@ -19,6 +19,7 @@ before_install:
 - git clone https://github.com/nCoda/hgdemo_config.git
 - rm julius/js/electron_main.js
 - cp electron_main_production.js julius/js/electron_main.js
+- pip install --upgrade pip
 - pip install Cython
 - pip install virtualenv
 - pip install py2app
@@ -34,7 +35,7 @@ install:
 - cd fujian && pip install . && cd ..
 - cd ShelfExtender && pip install . && cd ..
 - cd mercurial-hug && pip install . && cd ..
-- cd hgdemo_config && backend_venv/bin/python2.7 -m shelfex & cd ..
+- cd hgdemo_config && python -m shelfex & cd ..
 - mkdir programs
 - cp -r hgdemo_config/repo programs/hgdemo
 - pip install pytest
