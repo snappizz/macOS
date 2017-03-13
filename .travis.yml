@@ -11,12 +11,12 @@ branches:
   only:
   - main
 before_install:
-- git clone --recursive https://github.com/nCoda/julius.git
+- git clone --recursive https://github.com/nCoda/julius.git julius
 - git clone https://github.com/nCoda/lychee.git lychee
 - git clone https://github.com/nCoda/fujian.git fujian
-- git clone https://github.com/nCoda/mercurial-hug.git
-- git clone https://github.com/nCoda/ShelfExtender.git
-- git clone https://github.com/nCoda/hgdemo_config.git
+- git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+- git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
+- git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
 - rm julius/js/electron_main.js
 - cp electron_main_production.js julius/js/electron_main.js
 - pip install --upgrade pip
