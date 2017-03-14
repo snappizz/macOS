@@ -26,7 +26,7 @@ before_install:
 - pip install py2app
 - pip install biplist
 install:
-- cd julius && npm install && cd node_modules && npm install electron-log && cd .. && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
+- cd julius && npm install && cd node_modules && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && .bin/electron-rebuild --version 1.6.0 && cd ../..
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - virtualenv --system-site-packages backend_venv
@@ -41,13 +41,13 @@ install:
 - cp -r hgdemo_config/repo programs/hgdemo
 - pip install pytest
 - pip install mock
-- python package_ncoda_macOS.py
-- python backend/setup.py py2app
-- cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
-
 
 script: source build_test.sh
 before_deploy:
+- python package_ncoda_macOS.py
+- cd nCoda.app/Contents/Resources/app/node_modules && npm install electron-log && cd ../../../../..
+- python backend/setup.py py2app
+- cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
 deploy:
   provider: releases
