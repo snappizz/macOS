@@ -43,7 +43,7 @@ install:
 - pip install mock
 - python package_ncoda_macOS.py
 - python backend/setup.py py2app
-- cp -r backend/dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
+- cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
 
 
 script: source build_test.sh
