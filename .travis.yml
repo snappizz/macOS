@@ -7,6 +7,7 @@ matrix:
   include:
   - os: osx
     language: generic
+    cache: pip
 branches:
   only:
   - main
@@ -40,8 +41,8 @@ install:
 - cp -r hgdemo_config/repo programs/hgdemo
 - pip install pytest
 - pip install mock
-- backend/bin/python2.7 package_ncoda_macOS.py
-- backend/bin/python2.7 backend/setup.py py2app
+- python package_ncoda_macOS.py
+- python backend/setup.py py2app
 - cp -r backend/dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
 
 
