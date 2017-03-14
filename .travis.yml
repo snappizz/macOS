@@ -25,10 +25,10 @@ before_install:
 - pip install py2app
 install:
 - cd julius && npm install && cd node_modules && npm install electron-log && cd .. && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
-- pip install biplist
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - virtualenv backend_venv
+- pip install biplist
 - source backend_venv/bin/activate
 - cd mercurial-hug && pip install . && cd ..
 - cd lychee && pip install . && cd ..
