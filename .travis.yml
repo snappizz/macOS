@@ -45,7 +45,6 @@ install:
 script: source build_test.sh
 before_deploy:
 - python package_ncoda_macOS.py
-- cd nCoda.app/Contents/Resources/app/node_modules && npm install electron-log && cd ../../../../..
 - python backend/setup.py py2app
 - cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
 - hdiutil create -srcfolder nCoda.app nCoda.dmg
