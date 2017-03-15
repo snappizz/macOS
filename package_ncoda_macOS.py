@@ -80,7 +80,7 @@ def bundle_electron_app_front_end():
     # get electron-log
     copytree(
         os.path.join(PATH_TO_JULIUS, 'node_modules', 'electron-log'),
-        os.path.join(PATH_TO_APP, 'node_modules', 'electron-log '))
+        os.path.join(PATH_TO_APP, 'node_modules', 'electron-log'))
 
 
 
