@@ -26,7 +26,7 @@ before_install:
 - pip install py2app
 - pip install biplist
 install:
-- cd julius && npm install && cd node_modules && npm install --save electron-log && npm install --save electron-rebuild && .bin/electron-rebuild --version 1.6.0 && cd ../..
+- cd julius && npm install && npm install electron-log && npm install electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
 - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
 - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
 - virtualenv --system-site-packages backend_venv
