@@ -28,3 +28,4 @@ Main Fujian module.
 from fujian import runner
 
 runner.start_fujian()
+
