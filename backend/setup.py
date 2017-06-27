@@ -11,7 +11,7 @@ APP = ['nCoda.py']
 DATA_FILES = []
 OPTIONS = {
     'argv_emulation': True,
-    'packages': ['fujian', 'abjad', 'lychee', 'shelfex'],
+    # 'packages': ['fujian', 'abjad', 'lychee', 'shelfex'],
     }
 
 setup(
