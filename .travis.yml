@@ -45,7 +45,7 @@ install:
 
 script: source build_test.sh
 before_deploy:
-- python backend/setup.py py2app --verbose-interpreter
+- python setup.py py2app
 - mkdir dist/nCoda.app/Contents/Resources/app
 - mkdir dist/nCoda.app/Contents/Resources/app/node_modules
 - python package_ncoda_macOS.py

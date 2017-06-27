@@ -25,7 +25,52 @@
 '''
 Main Fujian module.
 '''
-from fujian import runner
+# from fujian import runner
 
-runner.start_fujian()
+import subprocess
 
+
+_FUJIAN_COMMAND = ['python', '-m', 'fujian']
+_JULIUS_COMMAND = [
+    # '/usr/lib64/ncoda/node_modules/.bin/electron',
+    '../Resources/app/node_modules/electron/cli.js',
+    # '/usr/share/web-assets/julius/index.html',
+    '../Resources/app/index.html'
+]
+
+
+def the_script():
+
+    # hold the Popen instances
+    subprocesses = []
+
+    try:
+        # start Fujian
+        try:
+            subprocesses.append(subprocess.Popen(_FUJIAN_COMMAND))
+        except subprocess.CalledProcessError as cperr:
+            print('Encountered the following error while starting Fujian:\n{}'.format(cperr))
+            raise SystemExit(1)
+
+        # start Julius
+        try:
+            subprocess.call(_JULIUS_COMMAND)
+        except KeyboardInterrupt:
+            pass
+
+    finally:
+        for each_instance in subprocesses:
+            # NB: in Python 3, this would raise ProcessLookupError
+            try:
+                each_instance.terminate()
+                each_instance.wait()
+            except OSError:
+                # that means the process already quit
+                pass
+
+
+
+if __name__ == '__main__':
+    the_script()
+else:
+    print('Please start nCoda by running from the commandline.')
