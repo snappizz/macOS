@@ -79,7 +79,7 @@ def set_values_for_plist(plist_path):
     plist_dict['CFBundleDisplayName'] = 'nCoda'
     plist_dict['CFBundleIdentifier'] = 'org.nCoda.nCoda'
     plist_dict['CFBundleName'] = 'nCoda'
-    plist_dict['CFBundleIconFile'] = 'nCoda.icns'
+    plist_dict['CFBundleIconFile'] = 'ncoda.icns'
     writePlist(plist_dict, plist_path)
 
 
