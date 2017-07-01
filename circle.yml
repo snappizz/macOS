@@ -24,27 +24,29 @@ dependencies:
     - pip install biplist
     - pip install pytest
     - pip install mock
+  override:
+    - cd julius && npm install && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
+    - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
+    - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
+    - virtualenv --system-site-packages backend_venv
+    - source backend_venv/bin/activate
+    - cd mercurial-hug && pip install . && cd ..
+    - cd lychee && pip install . && cd ..
+    - cd fujian && pip install . && cd ..
+    - cd ShelfExtender && pip install . && cd ..
+    - cd mercurial-hug && pip install . && cd ..
+    - cd hgdemo_config && python -m shelfex && cd ..
 
-# compile:
-#   - cd julius && npm install && npm install --save-dev electron-log && npm install --save-dev electron-rebuild && ./node_modules/.bin/electron-rebuild --version 1.6.0 && cd ..
-#   - cd julius && node_modules/.bin/browserify js/ncoda-init.js --outfile js/ncoda-compiled.js && cd ..
-#   - cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && cd ..
-#   - virtualenv --system-site-packages backend_venv
-#   - source backend_venv/bin/activate
-#   - cd mercurial-hug && pip install . && cd ..
-#   - cd lychee && pip install . && cd ..
-#   - cd fujian && pip install . && cd ..
-#   - cd ShelfExtender && pip install . && cd ..
-#   - cd mercurial-hug && pip install . && cd ..
-#   - cd hgdemo_config && python -m shelfex && cd ..
-#   - mkdir programs
-#   - cp -r hgdemo_config/repo programs/hgdemo
-#   - python setup.py py2app --verbose-interpreter
-#   - mkdir dist/nCoda.app/Contents/Resources/app
-#   - mkdir dist/nCoda.app/Contents/Resources/app/node_modules
-#   - python package_ncoda_macOS.py
-#   # - cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
-#   - hdiutil create -srcfolder dist/nCoda.app nCoda.dmg
+compile:
+  - mkdir programs
+  - cp -r hgdemo_config/repo programs/hgdemo
+  - python setup.py py2app --verbose-interpreter
+  - mkdir dist/nCoda.app/Contents/Resources/app
+  - mkdir dist/nCoda.app/Contents/Resources/app/node_modules
+  - python package_ncoda_macOS.py
+  # - cp -r dist/nCoda.app nCoda.app/Contents/Resources/app/nCoda.app
+  - hdiutil create -srcfolder dist/nCoda.app nCoda.dmg
+#   
 
 test:
   - source build_test.sh
