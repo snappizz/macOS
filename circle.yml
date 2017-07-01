@@ -1,6 +1,4 @@
 machine:
-  node:
-    version: 6.3.0
   python:
     version: 2.7.13
 
