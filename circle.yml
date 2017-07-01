@@ -1,7 +1,3 @@
-machine:
-  python:
-    version: 2.7.13
-
 # checkout:
 #   override:
 #     - git clone --recursive https://github.com/nCoda/julius.git julius
@@ -49,8 +45,8 @@ machine:
 #   - hdiutil create -srcfolder dist/nCoda.app nCoda.dmg
 # #   
 
-# test:
-#   - source build_test.sh
+test:
+  - source build_test.sh
   
 # deployment:
 #   production:
