@@ -5,12 +5,13 @@ machine:
     version: 2.7.13
 
 checkout:
-  - git clone --recursive https://github.com/nCoda/julius.git julius
-  - git clone https://github.com/nCoda/lychee.git lychee
-  - git clone https://github.com/nCoda/fujian.git fujian
-  - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
-  - git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
-  - git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
+  override:
+    - git clone --recursive https://github.com/nCoda/julius.git julius
+    - git clone https://github.com/nCoda/lychee.git lychee
+    - git clone https://github.com/nCoda/fujian.git fujian
+    - git clone https://github.com/nCoda/mercurial-hug.git mercurial-hug
+    - git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
+    - git clone https://github.com/nCoda/hgdemo_config.git hgdemo_config
   post:
     - git submodule sync
     - git submodule update --init
