@@ -37,6 +37,8 @@ dependencies:
     - cd mercurial-hug && pip install . && cd ..
     - cd hgdemo_config && python -m shelfex && cd ..
 
+database:
+
 compile:
   - mkdir programs
   - cp -r hgdemo_config/repo programs/hgdemo
@@ -51,8 +53,8 @@ compile:
 test:
   - source build_test.sh
   
-# deployment:
-#   production:
-#     branch: master
-#     commands:
-#       - ./deploy_master.sh
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./deploy_master.sh
