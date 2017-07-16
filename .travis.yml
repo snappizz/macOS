@@ -12,7 +12,7 @@ branches:
   only:
   - main
 before_install:
-- rvm use ruby-2.0.0-p648
+- rvm get head || true
 - git clone --recursive https://github.com/nCoda/julius.git julius
 - git clone https://github.com/nCoda/lychee.git lychee
 - git clone https://github.com/nCoda/fujian.git fujian
