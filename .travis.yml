@@ -49,7 +49,7 @@ script: source build_test.sh
 before_deploy:
 - cp -r julius/node_modules/electron/dist/Electron.app nCoda.app
 - mkdir nCoda.app/Contents/Resources/app
-- python setup.py py2app # --verbose-interpreter
+# - python setup.py py2app # --verbose-interpreter
 # - mkdir dist/nCoda.app/Contents/Resources/app
 # - mkdir dist/nCoda.app/Contents/Resources/app/node_modules
 - python package_ncoda_macOS.py
