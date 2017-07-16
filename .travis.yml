@@ -6,6 +6,7 @@ notifications:
 matrix:
   include:
   - os: osx
+    osx_image: xcode8.2
     language: generic
     cache: pip
 branches:
