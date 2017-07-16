@@ -39,7 +39,7 @@ import subprocess
 # programs/julius/node_modules/electron/dist/
 
 # define globals -- assumed relative to macOS directory
-PATH_TO_NCODA = os.path.join('dist', 'nCoda.app')
+PATH_TO_NCODA = os.path.join('nCoda.app')
 PATH_TO_JULIUS = 'julius'
 
 PATH_TO_APP = os.path.join(
