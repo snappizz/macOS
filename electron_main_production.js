@@ -46,10 +46,10 @@ const version = '0.0'; //electron.app.getVersion()
   
 
 app.on('before-quit', function() {
-  processes.forEach(function(proc) {
-    log.info('got here');
-    proc.kill( 'SIGINT');
-  });
+    var exec = require('child_process').exec;
+    var fujian = exec('pkill -f Electron.app/Contents/Resources/app/nCoda.app/Contents/MacOS/nCoda', {
+        shell: false,
+    });
 });
 
 app.on('window-all-closed', function () {

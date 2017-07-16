@@ -42,7 +42,12 @@ import subprocess
 PATH_TO_NCODA = os.path.join('dist', 'nCoda.app')
 PATH_TO_JULIUS = 'julius'
 
-PATH_TO_APP = os.path.join(PATH_TO_NCODA, 'Contents', 'Resources', 'app')
+PATH_TO_APP = os.path.join(
+    PATH_TO_NCODA,
+    'Contents',
+    'Resources',
+    'app'
+    )
 
 
 def bundle_electron_app_front_end():
@@ -58,9 +63,11 @@ def bundle_electron_app_front_end():
         'fonts',
         'js',
         'lib',
-        'css', 
-        os.path.join('node_modules', 'codemirror'),
-        os.path.join('node_modules', 'electron'),
+        'css',
+        'node_modules'
+        # os.path.join('node_modules', 'codemirror'),
+        # os.path.join('node_modules', 'electron-devtools-installer'),
+        # os.path.join('node_modules', 'electron'),
         ]
     # copy Julius dirs into app directory
     for fed in front_end_dirs:
