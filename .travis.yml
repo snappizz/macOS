@@ -16,7 +16,7 @@ before_install:
   - pip install pytest
   - pip install mock
   - npm install electron-packager -g
-  
+
 install:
 - source bundleMainApp.sh
 
