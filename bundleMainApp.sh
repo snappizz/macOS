@@ -60,7 +60,7 @@ pwd
 mv electron_main_production.js julius/js/electron_main.js
 rm -rf julius/julius-darwin-x64
 # rm -rf julius/package-lock.json
-cd julius && electron-packager . && cd ..
+cd julius && electron-packager . --icon=../nCoda.icns && cd ..
 cp -r dist/nCoda.app julius/julius-darwin-x64/julius.app/Contents/Resources/
 cd .. 
 deactivate
