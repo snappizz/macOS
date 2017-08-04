@@ -1,0 +1,7 @@
+-e git+https://github.com/nCoda/mercurial-hug.git@476c8ef2fe0f4a8cffbf1ff047afeee5cbc58469#egg=mercurial_hug
+-e git+ssh://vcs@goldman.ncodamusic.org/diffusion/LC/lychee.git@b278aa99b939b04457089cc65a0b2e0b3744b473#egg=Lychee
+-e git+ssh://vcs@goldman.ncodamusic.org/diffusion/FJ/fujian.git@a052f692fefa3b0e963377bc79b18210046f1aa6#egg=Fujian
+tornado==4.5.1
+Abjad==2.20
+biplist==1.0.2
+py2app==0.14
