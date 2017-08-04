@@ -26,28 +26,8 @@
 Main Fujian module.
 '''
 from fujian import runner
-from sys import exit
-import subprocess
-
-
-def the_script():
-
-    # hold the Popen instances
-    subprocesses = []
-
-    try:
-        # start Fujian
-        try:
-            # subprocesses.append(subprocess.Popen('python', '-m', 'fujian'))
-            runner.start_fujian()
-        except subprocess.CalledProcessError as cperr:
-            raise SystemExit(1)
-            pass
-
-    finally:
-        sys.exit()
 
 if __name__ == '__main__':
-    the_script()
+    runner.start_fujian()
 else:
-    print('Please start nCoda by running from the commandline.')
+    print('Please start nCoda by running from the commandline.')    
