@@ -13,14 +13,15 @@ branches:
   only:
   - main
 before_install:
+  - brew update && brew upgrade
+  - brew services start theseal/ssh-askpass/ssh-askpass
+
+install:
   - pip install pytest
   - pip install mock
   - npm install electron-packager -g
-
-install:
-- source bundleMainApp.sh
-
-- cd build && source backend_venv/bin/activate && cd ..
+  - source bundleMainApp.sh
+  - cd build && source backend_venv/bin/activate && cd ..
 
 script: source build_test.sh
 
