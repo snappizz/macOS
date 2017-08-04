@@ -30,10 +30,7 @@ var fs = require('fs');
 const BrowserWindow = electron.BrowserWindow;
 const Menu = electron.Menu;
 const app = electron.app;
-var log = require('electron-log');
 // Same as for console transport 
-log.transports.file.level = 'info';
-log.transports.file.format = '{h}:{i}:{s}:{ms} {text}';
 var processes = [];
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -47,14 +44,13 @@ const version = '0.0'; //electron.app.getVersion()
 
 app.on('before-quit', function() {
     var exec = require('child_process').exec;
-    var fujian = exec('pkill -f Electron.app/Contents/Resources/app/nCoda.app/Contents/MacOS/nCoda', {
+    var fujian = exec('pkill -f julius.app/Contents/Resources/nCoda.app/Contents/MacOS/nCoda', {
         shell: false,
     });
 });
 
 app.on('window-all-closed', function () {
     if (process.platform !== 'darwin') {
-        log.info('in the window closing block');
         app.quit();
     }
 });
@@ -65,28 +61,26 @@ function start_fujian_lychee_venv(){
     var this_dir = __dirname;
     var dir_above = path.dirname(this_dir);
     var spawn = require('child_process').spawn;
-    var fujian = spawn('/usr/bin/open', [dir_above + '/nCoda.app'], {
+    var fujian = spawn('/usr/bin/open', [dir_above + '/../nCoda.app'], {
         shell: true,
     });
     fujian.stdout.on('data', function (data) {
-        log.info('get received');
-        log.info(data);
     });
 
     fujian.on('close', function(data) {
-        log.info('closing');
+        
     });
 
     fujian.stderr.on('data', function(data) {
-        log.info('sterrored: ' + data);
+        
     });
 
     fujian.on('error', function(err) {
-        log.info('errored: ' + err);
+        
     });
-    log.info(processes.length+'/n');
+    
     processes.push(fujian);
-    log.info(processes.length+'/n');
+    
 }
 
 app.on('ready', function () {
