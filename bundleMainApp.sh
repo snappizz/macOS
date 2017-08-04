@@ -58,10 +58,10 @@ cd julius && node_modules/.bin/lessc css/ncoda/main.less css/ncoda/main.css && c
 cp package.json julius/
 pwd
 mv electron_main_production.js julius/js/electron_main.js
-rm -rf julius/julius-darwin-x64
+rm -rf julius/nCoda-darwin-x64
 # rm -rf julius/package-lock.json
 cd julius && electron-packager . --icon=../nCoda.icns && cd ..
-cp -r dist/nCoda.app julius/julius-darwin-x64/julius.app/Contents/Resources/
+cp -r dist/nCoda.app julius/nCoda-darwin-x64/nCoda.app/Contents/Resources/
 cd .. 
 deactivate
 # rm -rf dist/nCoda.app

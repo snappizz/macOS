@@ -44,7 +44,7 @@ const version = '0.0'; //electron.app.getVersion()
 
 app.on('before-quit', function() {
     var exec = require('child_process').exec;
-    var fujian = exec('pkill -f julius.app/Contents/Resources/nCoda.app/Contents/MacOS/nCoda', {
+    var fujian = exec('pkill -f nCoda.app/Contents/Resources/nCoda.app/Contents/MacOS/nCoda', {
         shell: false,
     });
 });
