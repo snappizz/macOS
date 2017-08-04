@@ -12,10 +12,6 @@ matrix:
 branches:
   only:
   - main
-before_install:
-  - brew tap theseal/ssh-askpass
-  - brew install ssh-askpass
-  - brew services start theseal/ssh-askpass/ssh-askpass
 
 install:
   - pip install pytest
