@@ -59,13 +59,8 @@ cp package.json julius/
 pwd
 mv electron_main_production.js julius/js/electron_main.js
 rm -rf julius/nCoda-darwin-x64
-# rm -rf julius/package-lock.json
 cd julius && electron-packager . --icon=../nCoda.icns && cd ..
 cp -r dist/nCoda.app julius/nCoda-darwin-x64/nCoda.app/Contents/Resources/
+hdiutil create -srcfolder julius/nCoda-darwin-x64/nCoda.app dist/nCoda.dmg
 cd .. 
 deactivate
-# rm -rf dist/nCoda.app
-# mv dist/Electron.app dist/nCoda.app
-# cp nCoda.icns dist/nCoda.app/Contents/Resources/
-# python ../package_ncoda_macOS.py
-# hdiutil create -srcfolder dist/nCoda.app nCoda.dmg
