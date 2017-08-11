@@ -2,6 +2,6 @@
 -e git+https://github.com/nCoda/lychee.git@b278aa99b939b04457089cc65a0b2e0b3744b473#egg=Lychee
 -e git+https://github.com/nCoda/fujian.git@a052f692fefa3b0e963377bc79b18210046f1aa6#egg=Fujian
 tornado==4.5.1
-# Abjad==2.20
+Abjad==2.20
 biplist==1.0.2
 py2app==0.14

@@ -3,7 +3,7 @@
 # Copyright 2016 Jeff Trevino
 
 
-#first back
+# first back
 if ! [ -d build ]
 then
     mkdir build
@@ -16,7 +16,7 @@ then
     cd build # -> macOS/build/
     virtualenv backend_venv
     source backend_venv/bin/activate
-    pip install -r production_requirements.txt
+    # pip install -r production_requirements.txt
     mkdir programs
     cd programs # -> macOS/build/programs/
     git clone https://github.com/nCoda/ShelfExtender.git ShelfExtender
