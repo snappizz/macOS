@@ -14,7 +14,6 @@ branches:
   - main
 
 install:
-  - brew install python
   - pip install pytest
   - pip install mock
   - npm install electron-packager -g
