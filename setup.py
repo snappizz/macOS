@@ -11,7 +11,7 @@ APP = ['nCoda.py']
 DATA_FILES = []
 OPTIONS = {
     'argv_emulation': True,
-    'includes': ['abjad'],
+    # 'includes': ['abjad'],
     # 'includes': ['fujian', 'abjad', 'lychee'],
     # 'packages': ['fujian', 'abjad', 'lychee'],
     }
