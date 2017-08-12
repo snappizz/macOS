@@ -7,18 +7,17 @@ Usage:
 
 from setuptools import setup
 
-APP = ['nothing.py']
+APP = ['nCoda.py']
 DATA_FILES = []
 OPTIONS = {
     'argv_emulation': True,
-    'includes': ['abjad'],
     # 'includes': ['fujian', 'abjad', 'lychee'],
     # 'packages': ['fujian', 'abjad', 'lychee'],
     }
 
 setup(
     app=APP,
-    # data_files=['programs'],
+    data_files=['programs'],
     options={'py2app': OPTIONS},
     setup_requires=['py2app'],
 )
