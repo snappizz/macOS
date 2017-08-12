@@ -1,3 +1,0 @@
-import abjad
-
-print('hi') 
